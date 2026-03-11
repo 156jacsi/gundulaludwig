@@ -1,0 +1,50 @@
+.nsc_bar_cookietypes_table td,
+th {
+  padding: 0em;
+}
+
+.nsc_bar_cookietypes_table th {
+  padding: 0em;
+}
+
+label.nsc_bar_inline_error {
+  text-align: center;
+  color: #cc0000;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+input.nsc_bar_inline_error {
+  background: #cc0000;
+  color: white;
+}
+
+@media screen and (max-width: 782px) {
+  .nsc_bar_cookietypes_table
+    tr:not(.inline-edit-row):not(.no-items)
+    td:not(.column-primary)::before {
+    position: relative;
+    left: 2px;
+    display: block;
+    overflow: hidden;
+    content: attr(data-colname);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .nsc_bar_cookietypes_table th {
+    display: none;
+  }
+  .nsc_bar_cookietypes_table tr {
+    background: #f9f9f9;
+  }
+
+  .nsc_bar_cookietypes_table td {
+    padding: 0.5em;
+  }
+  .nsc_bar_cookietypes_table {
+    border-spacing: 1em 1em;
+    position: relative;
+    top: -2em;
+  }
+}

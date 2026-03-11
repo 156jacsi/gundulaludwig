@@ -1,0 +1,11 @@
+--2020-09-16 09:38:07--  https://google-webfonts-helper.herokuapp.com/api/fonts/didact-gothic?download=zip
+Resolving google-webfonts-helper.herokuapp.com (google-webfonts-helper.herokuapp.com)... 52.19.225.66, 52.31.139.247, 34.246.233.149, ...
+Connecting to google-webfonts-helper.herokuapp.com (google-webfonts-helper.herokuapp.com)|52.19.225.66|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘didact-gothic?download=zip’
+
+didact-gothic?download=zip     [<=>                                     ]       0  --.-KB/s               didact-gothic?download=zip     [ <=>                                    ]  96,90K  --.-KB/s    in 0,07s   
+
+2020-09-16 09:38:07 (1,32 MB/s) - ‘didact-gothic?download=zip’ saved [99227]
+

@@ -1,0 +1,573 @@
+{
+  "plugin_slug": "nsc_bar-cookie-consent",
+  "plugin_name": "Beautiful and responsive cookie consent",
+  "plugin_prefix": "nsc_bar_",
+  "settings_page_configs": {
+    "page_title": "Beautiful Cookie Consent Banner",
+    "menu_title": "Cookie Consent Banner",
+    "capability": "edit_published_posts",
+    "description": "top_description.html"
+  },
+  "setting_page_fields": {
+    "active_tab_slug": "",
+    "active_tab_index": 0,
+    "tabs": [
+      {
+        "tabname": "General",
+        "tab_description": "",
+        "tab_slug": "general",
+        "active": false,
+        "tabfields": [
+          {
+            "field_slug": "activate_banner",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": false,
+            "helpertext": "<strong>Important:</strong> The Information if a user as seen the banner is stored in cookie which is not resetted, when deactivating this plugin. If you want to reset user settings you can rename the cookie name.",
+            "name": "Enable Cookie Banner",
+            "save_in_db": true
+          },
+          {
+            "field_slug": "activate_test_banner",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "pre_selected_value": true,
+            "extra_validation_name": false,
+            "helpertext": "If checked you see the banner in the settings section and your consent cookie will be deleted with every admin page view. So you can see the banner more often in the frontend.",
+            "name": "Preview Banner",
+            "save_in_db": true
+          },
+          {
+            "field_slug": "onStatusChange",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "pre_selected_value": false,
+            "extra_validation_name": false,
+            "helpertext": "If checked, the events 'beautiful_cookie_consent_initialized' and 'beautiful_cookie_consent_updated' will pushed in your dataLayer after consent or a change of consent.",
+            "name": "Push consent event to dataLayer",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "dataLayerName",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "dataLayer",
+            "helpertext": "Caution: only change if you know what you are doing. If you have renamed your default GTM dataLayer you can put the new name here. To this dataLayer the event will pushed.",
+            "name": "DataLayer name",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "backend_cookie_conversion",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "pre_selected_value": false,
+            "extra_validation_name": false,
+            "helpertext": "In Safari and Firefox cookies set by javascript are only valid for 7 days. As consequence your user will see the banner every 7 days, which can be annoying. By checking this option, the cookie is converted to a backend cookie and the defined expiration is restored. Default expiration is 365 days.",
+            "name": "Cookie ITP 2.1 resilient (use backend cookie)",
+            "save_in_db": true
+          }
+        ]
+      },
+      {
+        "tabname": "Appearance",
+        "tab_description": "",
+        "tab_slug": "banner_colors",
+        "active": false,
+        "tabfields": [
+          {
+            "field_slug": "theme",
+            "type": "select",
+            "save_as": "string",
+            "required": false,
+            "selectable_values": [
+              { "value": "block", "name": "Block" },
+              {
+                "value": "classic",
+                "name": "Classic"
+              },
+              { "value": "edgeless", "name": "Edgeless" }
+            ],
+            "extra_validation_name": false,
+            "pre_selected_value": "block",
+            "helpertext": "",
+            "name": "Theme",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "position",
+            "type": "select",
+            "save_as": "string",
+            "required": false,
+            "selectable_values": [
+              { "value": "top", "name": "Top" },
+              {
+                "value": "bottom",
+                "name": "Bottom"
+              },
+              { "value": "bottom-left", "name": "Float bottom left" },
+              { "value": "bottom-right", "name": "Float bottom right" },
+              { "value": "top-left", "name": "Float top left" },
+              { "value": "top-right", "name": "Float top  right" }
+            ],
+            "extra_validation_name": false,
+            "pre_selected_value": "bottom",
+            "helpertext": "",
+            "name": "Position",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "customizedFont",
+            "type": "longtext",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": "nsc_bar_replace_doublequote_with_single",
+            "pre_selected_value": "",
+            "helpertext": "Add you desired Fonts name here, e.g. 'Catamaran-Regular', sans-serif. Please be aware that these fonts should be loaded already. You can only use already existing fonts here. It won't install them.",
+            "name": "Custom font name",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "palette_popup_background",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": "nsc_bar_check_input_color_code",
+            "pre_selected_value": "#237afc",
+            "helpertext": "",
+            "name": "Banner Background Color",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "palette_popup_text",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": "nsc_bar_check_input_color_code",
+            "pre_selected_value": "#fff",
+            "helpertext": "",
+            "name": "Banner Text Color",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "palette_button_background",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": "nsc_bar_check_input_color_code",
+            "pre_selected_value": "#fff",
+            "helpertext": "",
+            "name": "Button Background Color",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "palette_button_text",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": "nsc_bar_check_input_color_code",
+            "pre_selected_value": "#237afc",
+            "helpertext": "",
+            "name": "Button Text Color",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "palette_button_border",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": "nsc_bar_check_input_color_code",
+            "pre_selected_value": "",
+            "helpertext": "",
+            "name": "Button Border Color",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "palette_switches_background",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": "nsc_bar_check_input_color_code",
+            "pre_selected_value": "",
+            "helpertext": "Needed for compliance type 'Differentiaded Consent'.",
+            "name": "Background of unselected switch",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "palette_switches_backgroundChecked",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": "nsc_bar_check_input_color_code",
+            "pre_selected_value": "",
+            "helpertext": "Needed for compliance type 'Differentiaded Consent'.",
+            "name": "Background of selected switch",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "palette_switches_switch",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": "nsc_bar_check_input_color_code",
+            "pre_selected_value": "",
+            "helpertext": "Needed for compliance type 'Differentiaded Consent'.",
+            "name": "Switch color",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "palette_switches_text",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": "nsc_bar_check_input_color_code",
+            "pre_selected_value": "",
+            "helpertext": "Needed for compliance type 'Differentiaded Consent'.",
+            "name": "Switch text label color",
+            "save_in_db": false
+          }
+        ]
+      },
+      {
+        "tabname": "Text",
+        "tab_description": "",
+        "tab_slug": "banner_text",
+        "active": false,
+        "tabfields": [
+          {
+            "field_slug": "content_dismiss",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "Got it",
+            "helpertext": "Used for 'Just Info' compliance type.",
+            "name": "Button 'Dismiss' Text",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "content_deny",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "Deny",
+            "helpertext": "Used for 'Opt-In'and 'Opt-Out' compliance type.",
+            "name": "Button 'Deny Cookies' Text",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "content_allow",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "Allow all",
+            "helpertext": "Used for 'Opt-In', 'Opt-Out' and 'Differentiated Consent - 2 Buttons' compliance type.",
+            "name": "Button 'Accept all Cookies' Text",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "content_savesettings",
+            "type": "text",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "Save Settings",
+            "helpertext": "Used for both 'Differentiated Consent' compliance types.",
+            "name": "Button 'Save Settings' Text",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "content_link",
+            "type": "longtext",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "Learn more",
+            "helpertext": "Text of link for more information, e.g. your privacy page or another page where you explain your cookies.",
+            "name": "'Learn More' Linktext",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "content_href",
+            "type": "longtext",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "http://yourdomain/dataprivacy",
+            "helpertext": "URL to your data privacy policy, for example.",
+            "name": "'Learn More' Link",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "content_message",
+            "type": "textarea",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "This website uses cookies to ensure you get the best experience on our website.",
+            "helpertext": "",
+            "name": "Text for Banner",
+            "save_in_db": false
+          }
+        ]
+      },
+      {
+        "tabname": "Compliance & Behaviour",
+        "tab_description": "tab_compliance_and_behaviour.html",
+        "tab_slug": "compliance_type",
+        "active": false,
+        "tabfields": [
+          {
+            "field_slug": "type",
+            "type": "select",
+            "save_as": "string",
+            "required": false,
+            "selectable_values": [
+              { "value": "info", "name": "Just tell the user we use cookies." },
+              {
+                "value": "detailed",
+                "name": "Differentiated Consent - 1 Button"
+              },
+              {
+                "value": "detailedRev",
+                "name": "Differentiated Consent - 2 Buttons"
+              },
+              {
+                "value": "opt-in",
+                "name": "Ask user to Opt-in"
+              },
+              {
+                "value": "opt-out",
+                "name": "Ask user to Opt-out"
+              }
+            ],
+            "extra_validation_name": false,
+            "pre_selected_value": "info",
+            "helpertext": "If you use 'Differentiated Consent', 'Opt-in' or 'Opt-out' you must make sure, that all plugins and features of your site respect that setting, this is not part of this plugin. More info see documentation link above. The user setting can be found in the cookie, set by this plugin. The difference between opt-in and opt-out is at the moment only the display of the shortcode [cc_revoke_settings_link_nsc_bar], if the user had no action taken, yet.",
+            "name": "Compliance Type",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "cookietypes",
+            "type": "hidden",
+            "save_as": "array",
+            "required": true,
+            "extra_validation_name": "nsc_bar_check_cookietypes",
+            "pre_selected_value": "",
+            "helpertext": "Specify the different cookie types. Cookie Suffix: each cookie type gets an own cookie to save the acceptance status. The name is '<cookiename>'_'cookie suffix'.",
+            "name": "Cookie Types",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "makeButtonsEqual",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": false,
+            "helpertext": "Per default the button which set the widest consent is highlighted, this can be considered as dark pattern. For some regulations it is neccesary, that both have an equal weight. When ticking this box, they have some size and color.",
+            "name": "Make the buttons look equal",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "setDiffDefaultCookiesFirstPV",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": false,
+            "helpertext": "Only for 'Differentiated Consent': It might be useful to have the configured default setting on first page view in a cookie, before any user interaction. Depending on your compliance requirements, it might be a legal issue.",
+            "name": "Set cookies with default values on 1st page view",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "dismissOnScroll",
+            "type": "text",
+            "save_as": "integer",
+            "required": false,
+            "extra_validation_name": "nsc_bar_integer",
+            "pre_selected_value": "",
+            "helpertext": "To disable, leave empty. To enable, set to the number of pixels a user must scroll vertically in order to trigger the dismiss.",
+            "name": "Allow on scroll",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "dismissOnTimeout",
+            "type": "text",
+            "save_as": "integer",
+            "required": false,
+            "extra_validation_name": "nsc_bar_integer",
+            "pre_selected_value": "",
+            "helpertext": "To disable, leave empty. To enable set value as time in milliseconds to autodismiss after set time.",
+            "name": "Allow on timeout (ms)",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "onPopupClose",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": false,
+            "helpertext": "Not working in admin preview! Only in frontend. Depending on your tracking set up, you might need a reload of the page after an opt in to track the page on which the user opted in.",
+            "name": "Reload after Bannerclick",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "ask_until_acceptance",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": false,
+            "helpertext": "If this is checked the banner will appear on the next page again, until the user accepts cookies. In case of 'differentiated consent' the user must accept all cookie types.",
+            "name": "Ask until acceptance",
+            "save_in_db": true
+          },
+          {
+            "field_slug": "blockScreen",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": false,
+            "helpertext": "Activate this, to block the page content, until the banner is closed. You force the user to make a choice.",
+            "name": "Block Page, if Banner shown",
+            "save_in_db": false
+          }
+        ]
+      },
+      {
+        "tabname": "Consent Management",
+        "tab_description": "tab_revoke_description.html",
+        "tab_slug": "revoke_settings_tab",
+        "active": false,
+        "tabfields": [
+          {
+            "field_slug": "revokable",
+            "type": "checkbox",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": true,
+            "helpertext": "Show tab at the bottom to give users the possibilty to change cookie settings.",
+            "name": "Show 'Cookie Settings' tab",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "content_policy",
+            "type": "longtext",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "Cookie Settings",
+            "helpertext": "Text of the small tab at the botton, once user had made a cookie choice.",
+            "name": "Text for 'Cookie Settings' tab",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "shortcode_link_show_banner_text",
+            "type": "longtext",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "Manage cookie settings",
+            "helpertext": "Text for link for showing the banner again. Nice to give user ability to manage their settings without displaying the settings tab. To display the link use this shortcode: [cc_show_cookie_banner_nsc_bar]",
+            "name": "Shortcode: Link text 'show banner'",
+            "save_in_db": true
+          },
+          {
+            "field_slug": "shortcode_link_text_opted_in",
+            "type": "longtext",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "You have opted in. Opt out now.",
+            "helpertext": "DEPRECATED: Will be only visible if compliance type: opt-in or opt-out. Text of shortcode link, if user has opted in for this shortcode [cc_revoke_settings_link_nsc_bar].",
+            "name": "Shortcode: Link text 'opted in'",
+            "save_in_db": true
+          },
+          {
+            "field_slug": "shortcode_link_text_opted_out",
+            "type": "longtext",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "You have opted out. Opt in now.",
+            "helpertext": "DEPRECATED: Will be only visible if compliance type: opt-in or opt-out. Text of shortcode link, if user has opted out for this shortcode [cc_revoke_settings_link_nsc_bar]",
+            "name": "Shortcode: Link text 'opted out'",
+            "save_in_db": true
+          }
+        ]
+      },
+      {
+        "tabname": "Cookie Settings",
+        "tab_description": "",
+        "tab_slug": "cookie_settings",
+        "active": false,
+        "tabfields": [
+          {
+            "field_slug": "cookie_name",
+            "type": "longtext",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "cookieconsent_status",
+            "helpertext": "Be careful: if changing the name all users will see the banner again, because there cookie gets 'resetted'.",
+            "name": "Cookie Name",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "cookie_domain",
+            "type": "longtext",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": "",
+            "helpertext": "You can leave it empty. If you do so, the current domain where the banner is clicked is used as cookie domain. <strong>Be careful:</strong> if changing the domain all users will see the banner again, because their cookie gets 'resetted'.",
+            "name": "Cookie Domain",
+            "save_in_db": false
+          },
+          {
+            "field_slug": "cookie_expiryDays",
+            "type": "longtext",
+            "save_as": "string",
+            "required": false,
+            "extra_validation_name": false,
+            "pre_selected_value": 365,
+            "helpertext": "in Days",
+            "name": "Cookie Expiry",
+            "save_in_db": false
+          }
+        ]
+      },
+      {
+        "tabname": "JSON Configuration",
+        "tab_description": "tab_jsonconfig_description.html",
+        "tab_slug": "advanced_config",
+        "active": false,
+        "tabfields": [
+          {
+            "field_slug": "bannersettings_json",
+            "type": "textarea",
+            "save_as": "string",
+            "required": true,
+            "extra_validation_name": "nsc_bar_check_input_json_settings",
+            "pre_selected_value": "",
+            "helpertext": "For more a detailed documentation how to strutcture the json please visit: https://cookieconsent.osano.com/download/",
+            "name": "JSON Config",
+            "save_in_db": true
+          }
+        ]
+      }
+    ]
+  }
+}

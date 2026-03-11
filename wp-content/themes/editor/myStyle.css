@@ -1,0 +1,189 @@
+/* didact-gothic-regular - latin */
+@font-face {
+  font-family: 'Didact Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/didact-gothic-v14-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Didact Gothic Regular'), local('DidactGothic-Regular'),
+       url('fonts/didact-gothic-v14-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/didact-gothic-v14-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/didact-gothic-v14-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('fonts/didact-gothic-v14-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('fonts/didact-gothic-v14-latin-regular.svg#DidactGothic') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+    font-family: 'League Spartan';
+    src: url('fonts/leaguespartan-bold.eot');
+    src: url('fonts/leaguespartan-bold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/leaguespartan-bold.woff2') format('woff2'),
+         url('fonts/leaguespartan-bold.woff') format('woff'),
+         url('fonts/leaguespartan-bold.ttf') format('truetype'),
+         url('fonts/leaguespartan-bold.svg#league_spartanbold') format('svg');
+
+}
+
+.entry-title, .site-footer a:hover, .site-description,.main-navigation .current-menu-item a, .main-navigation a:hover{
+	color: #438f26;
+}
+#menu-item-574.main-navigation a:hover {
+    color: #404040;
+    }
+@media screen and (min-width:769px){
+#myImgB{
+    background-image: url(logo.png);
+    opacity: 0.1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-repeat: no-repeat;
+    background-position: top 50px right 0;
+    background-size: 40%;
+
+}
+}
+/*
+@media screen and (max-width: 768px) and (min-width:600px){
+    #myImgS{
+	content: url(logo.png);
+	width: 12%;
+
+	float:right;
+	display: inline;
+	position: relative;
+	top: -20px;
+	right: 40px;
+    }
+}
+
+@media screen and (max-width: 600px) and (min-width:500px){
+    #myImgS{
+	content: url(logo.png);
+	width: 12%;
+
+	float:right;
+	display: inline;
+	position: relative;
+	top: -10px;
+	right: 40px;
+    }
+}
+@media screen and (max-width: 500px) and (min-width:400px){
+    #myImgS{
+	content: url(logo.png);
+	width: 12%;
+	float:right;
+	display: inline;
+	position: relative;
+	top: -8px;
+	right: 15px;
+    }
+}
+@media screen and (max-width: 400px) and (min-width:350px){
+    #myImgS{
+	content: url(logo.png);
+	width: 10%;
+	height: 100%;
+	display: inline;
+	position: relative;
+	top: 20px;
+	left: 10px;
+    }
+}
+@media screen and (max-width: 349px) and (min-width: 300px){
+    #myImgS2{
+      content: url(logo.png);
+      width: 15%;
+      height: 100%;
+      float: right;
+      top: -30px;
+      position: relative;
+      right: 50px;
+      display: inline;    
+    }
+
+}*/
+.afterLine{
+}
+
+.afterLine::after {
+  content: '';
+  flex: 1;
+  margin-left: 1rem;
+  height: 1px;
+  background-color: #000;
+  }
+
+table tr:nth-child(even) {
+   background-color: rgba(246, 246, 246, 0.6);
+}
+.site-header{overflow-y:auto;}
+
+.site-title{text-transform:none}
+*{
+  font-family: "Didact Gothic";
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td{
+  font-family: "Didact Gothic";
+}
+#gundula-title a{
+  font-family: "League Spartan";
+  font-weight:bold;
+}
+.site-title{font-size:32px;}
+@media screen and (max-width: 822px) and (min-width: 769px){
+	.site-title{font-size:28px;}
+}
+@media screen and (max-width: 880px) and (min-width: 823px){
+	.site-title{font-size:30px;}
+}
+@media screen and (min-width: 769px){
+	.toggle-bar{
+		display:none;
+	}
+	.entry-content{width: 95%;}
+	.entry-content p{text-align: justify;}
+}
+.site-footer{
+padding: 0;}
+.entry-title{font-size:45px;}
+@media screen and (max-width: 768px){
+  #tab-1.current .main-navigation {
+   /* display: none !important;*/
+  }
+  .main-navigation{padding: 14px 0; font-size:20px;}
+}
+.toggle-bar{background:none;}
+.more{
+  text-transform:none;
+  background: none;
+  color: black;
+  border: 1px solid;
+}
+.more:hover{
+  color: #438f26;
+  background: none;
+}
+.more:focus, .more:active{
+	border-color: inherit;
+	box-shadow:none;
+}
+.site-footer .site-info {
+    background: none;
+    border: 1px solid rgba(3,3,3,0.3);
+}
+.admin-bar .site-header{
+  padding-top: 95px;
+}
+.site-header{padding-top:20px;}
+hr{background: #999; }
+blockquote{font-size:22px;}
+input[type="tel"]{
+    color: #999;
+    border: 2px solid #eee;
+    border-radius: 2px;
+    padding: 8px 10px;
+}
+.cc-revoke.cc-bottom{
+	display:none;
+}
